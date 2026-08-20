@@ -1,7 +1,7 @@
 class Solution {
 public:
     int romanToInt(string s) {
-        std::unordered_map<char, int> roman = {
+    std::unordered_map<char, int> m = {
             {'I', 1},
             {'V', 5},
             {'X', 10},
@@ -12,17 +12,21 @@ public:
         };
 
         int total = 0;
-        int n = s.length();
+        
 
-        for (int i = 0; i < n; i++) {
-            if (i + 1 < n && roman[s[i]] < roman[s[i + 1]]) {
-                total -= roman[s[i]];
-            } else {
-                total += roman[s[i]];
+        for (int i = 0; i < s.size(); i++) {
+            if ( i==s.size()-1) {
+                total += m[s[i]];
+            } else if (m[s[i]]>=m[s[i+1]]){
+                
+                total += m[s[i]];
+            }
+            else{
+                total -= m[s[i]];
             }
         }
 
-        return total;
+        return total;    
         
     }
 };
