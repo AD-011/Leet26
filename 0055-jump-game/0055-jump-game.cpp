@@ -11,6 +11,9 @@ public:
             finalPos = i;
          }
       }
+      // if we reach the first index, 
+      // then we can make the jump possible 
+      
       return finalPos == 0;
         
     }
